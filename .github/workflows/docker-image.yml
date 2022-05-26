@@ -43,6 +43,6 @@ jobs:
           "CF_JIRA_EMAIL": "saffi.hartal@codefresh.io"
           "CF_JIRA_MESSAGE": "wip CR-11027"
           "CF_JIRA_PROJECT_PREFIX": "CR"
-        uses: codefresh-io/csdp-report-image@0.0.28
+        uses: codefresh-io/csdp-report-image@0.0.30
 
 
