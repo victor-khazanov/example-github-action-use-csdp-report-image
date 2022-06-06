@@ -31,8 +31,8 @@ jobs:
           CF_HOST: "https://saffi.pipeline-team.cf-cd.com"
           CF_VERBOSE: "1"
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
-          CF_DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          CF_DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+          CF_DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          CF_DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
           "CF_GITHUB_TOKEN": ${{ secrets.G_TOKEN }}
           "CF_GIT_PROVIDER": "github"
           "CF_GIT_REPO": "codefresh-io/example-github-action-use-csdp-report-image"
