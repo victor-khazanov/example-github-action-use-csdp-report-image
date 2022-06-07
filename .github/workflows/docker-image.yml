@@ -30,7 +30,7 @@ jobs:
           # Specify cluster app-proxy
           CF_HOST: "https://eti.pipeline-team.cf-cd.com"
           CF_VERBOSE: "1"
-          CF_API_KEY: ${{ secrets.ETI_TOKEN }}
+          CF_API_KEY: ${{ secrets.ETI-TOKEN }}
           CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
           "CF_GITHUB_TOKEN": ${{ secrets.G_TOKEN }}
           "CF_GIT_PROVIDER": "github"
