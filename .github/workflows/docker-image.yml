@@ -35,9 +35,9 @@ jobs:
 
 
 #         using integrations - registry integration named docker
-          CF_CONTAINER_REGISTRY_INTEGRATION: "etiquay"
+          CF_CONTAINER_REGISTRY_INTEGRATION: "test-210622"
 #         using integrations - jira integration named jira
-          CF_JIRA_INTEGRATION: "eti"
+          CF_JIRA_INTEGRATION: "jira"
 
 #           example of explicit docker hub credentials for cases that CF_CONTAINER_REGISTRY_INTEGRATION is not in use
 #           CF_DOCKERHUB_USERNAME: ${{ secrets.DOCKERQUAY_USERNAME }}
