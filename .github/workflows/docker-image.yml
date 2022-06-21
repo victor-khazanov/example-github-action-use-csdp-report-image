@@ -29,7 +29,7 @@ jobs:
           CF_IMAGE: ${{ secrets.DOCKERQUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
           CF_ENRICHERS: "jira, git"
 
-          CF_HOST: "https://mr-60c7443e37ca2730b9757992-d090527.cf-op.com"
+          CF_HOST: "mr-61d56b38c7dd3fc9383f70fe-d9ac11b.cf-op.com"
           # CF_HOST: "https://saffi.pipeline-team.cf-cd.com"
           CF_API_KEY: ${{ secrets.SAFFI_TOKEN }}
 
