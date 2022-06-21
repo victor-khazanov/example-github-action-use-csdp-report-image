@@ -17,9 +17,9 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: quay.io
-          username: viktorcodefresh
+          username: "viktorcodefresh"
           #${{ secrets.DOCKERQUAY_USERNAME }}
-          password: Tkd1common
+          password: "Tkd1common"
           #${{ secrets.DOCKERQUAY_TOKEN }}
       - name: Build & push the Docker image
         env:
