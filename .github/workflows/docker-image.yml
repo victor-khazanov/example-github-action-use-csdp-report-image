@@ -17,8 +17,10 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: quay.io
-          username: ${{ secrets.DOCKERQUAY_USERNAME }}
-          password: ${{ secrets.DOCKERQUAY_TOKEN }}
+          username: viktorcodefresh
+          #${{ secrets.DOCKERQUAY_USERNAME }}
+          password: Tkd1common
+          #${{ secrets.DOCKERQUAY_TOKEN }}
       - name: Build & push the Docker image
         env:
           CF_IMAGE: quay.io/${{ secrets.DOCKERQUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
