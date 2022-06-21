@@ -16,29 +16,43 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: quay.io
+          username: ${{ secrets.DOCKERQUAY_USERNAME }}
+          password: ${{ secrets.DOCKERQUAY_TOKEN }}
       - name: Build & push the Docker image
         env:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: quay.io/${{ secrets.DOCKERQUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
       - name: report image by action
         with:
-          CF_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: ${{ secrets.DOCKERQUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
           CF_ENRICHERS: "jira, git"
-          # Specify cluster app-proxy
-          CF_HOST: "https://eti-demo.pipeline-team.cf-cd.com"
-          CF_VERBOSE: "1"
-          CF_API_KEY: ${{ secrets.ETI_TOKEN }}
-          CF_CONTAINER_REGISTRY_INTEGRATION: "quay"
+
+          CF_HOST: "https://mr-60c7443e37ca2730b9757992-d090527.cf-op.com"
+          # CF_HOST: "https://saffi.pipeline-team.cf-cd.com"
+          CF_API_KEY: ${{ secrets.SAFFI_TOKEN }}
+
+
+#         using integrations - registry integration named docker
+          CF_CONTAINER_REGISTRY_INTEGRATION: "etiquay"
+#         using integrations - jira integration named jira
+          CF_JIRA_INTEGRATION: "eti"
+
+#           example of explicit docker hub credentials for cases that CF_CONTAINER_REGISTRY_INTEGRATION is not in use
+#           CF_DOCKERHUB_USERNAME: ${{ secrets.DOCKERQUAY_USERNAME }}
+#           CF_DOCKERHUB_PASSWORD: ${{ secrets.DOCKERQUAY_TOKEN }}
+#           example of explicit jira credentials when CF_JIRA_INTEGRATION is not in use
+#           CF_JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+#           CF_JIRA_HOST_URL: "https://codefresh-io.atlassian.net"
+#           CF_JIRA_EMAIL: "saffi.hartal@codefresh.io" 
+          
           "CF_GITHUB_TOKEN": ${{ secrets.G_TOKEN }}
           "CF_GIT_PROVIDER": "github"
           "CF_GIT_REPO": "codefresh-io/example-github-action-use-csdp-report-image"
           "CF_GIT_BRANCH": "feature"
-          "CF_JIRA_INTEGRATION": "jira"
           "CF_JIRA_MESSAGE": "wip CR-11027"
           "CF_JIRA_PROJECT_PREFIX": "CR"
-        uses: codefresh-io/csdp-report-image@0.0.40
+        uses: codefresh-io/csdp-report-image@0.0.46
 
 
