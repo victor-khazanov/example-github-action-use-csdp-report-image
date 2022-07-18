@@ -28,7 +28,7 @@ jobs:
           CF_CONTAINER_REGISTRY_INTEGRATION: "test-ecr-new-180722-2"
 
         
-        uses: codefresh-io/codefresh-report-image@0.0.84
+        uses: codefresh-io/codefresh-report-image@0.0.85
          
 
 
