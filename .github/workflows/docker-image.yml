@@ -21,10 +21,9 @@ jobs:
       - name: report image by action
         with:
           # Specify cluster app-proxy
-          CF_HOST: https://victor.pipeline-team.cf-cd.com/
+          CF_HOST: https://victor.pipeline-team.cf-cd.com
           CF_API_KEY: "62b94dae30afb65bb9fed775.6d29095389f5944781791a17a48fc512"
           CF_IMAGE: "095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest"
-          # use image registry integration - the name of the integration used for pulling information on the image.
           CF_CONTAINER_REGISTRY_INTEGRATION: "test-ecr-new-1"
           CF_WORKFLOW_NAME : "bla"
           WORKFLOW_URL: "www.google.com"
