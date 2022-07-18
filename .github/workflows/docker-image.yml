@@ -24,7 +24,7 @@ jobs:
           CF_HOST: https://victor.pipeline-team.cf-cd.com
           CF_API_KEY: "62b94dae30afb65bb9fed775.6d29095389f5944781791a17a48fc512"
           CF_IMAGE: "095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest"
-          #CF_CONTAINER_REGISTRY_INTEGRATION: "test-ecr-new-1"
+          CF_CONTAINER_REGISTRY_INTEGRATION: "test-ecr-new-1"
           CF_WORKFLOW_NAME : "bla"
           CF_WORKFLOW_URL: "www.google.com"          
           #CF_AWS_ROLE: arn:aws:iam::095585282052:role/test-victor-ecr
