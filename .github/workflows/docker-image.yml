@@ -13,48 +13,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          registry: quay.io
-          username: "viktorcodefresh"
-          #${{ secrets.DOCKERQUAY_USERNAME }}
-          password: "Tkd1common"
-          #${{ secrets.DOCKERQUAY_TOKEN }}
-      - name: Build & push the Docker image
+          role-to-assume: arn:aws:iam::095585282052:role/test-victor-ecr
+          aws-region: us-east-1
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+       
+      - name: Build & push the ECR image
         env:
-          CF_IMAGE: quay.io/${{ secrets.DOCKERQUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
+          CF_IMAGE: 095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest
         run: |
           docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
+          echo "Image should be accessible to your local machine (after docker login) by:"
+          echo "docker pull $CF_IMAGE"
+          docker pull $CF_IMAGE
+          echo "On the next step, the report image would use the integration to pull information on the reported image, and using the specified enrichers."
       - name: report image by action
         with:
-          CF_IMAGE: ${{ secrets.DOCKERQUAY_USERNAME }}/csdp-report-image-github-action:example-reported-image
-          CF_ENRICHERS: "jira, git"
+          # Specify cluster app-proxy
+          CF_HOST: https://victor.pipeline-team.cf-cd.com/
+          CF_API_KEY: "62b94dae30afb65bb9fed775.6d29095389f5944781791a17a48fc512"
+          # use image registry integration - the name of the integration used for pulling information on the image.
+          CF_CONTAINER_REGISTRY_INTEGRATION: "test-ecr-new-180722-2"
 
-          CF_HOST: "mr-61d56b38c7dd3fc9383f70fe-d9ac11b.cf-op.com"
-          # CF_HOST: "https://saffi.pipeline-team.cf-cd.com"
-          CF_API_KEY: ${{ secrets.SAFFI_TOKEN }}
-
-
-#         using integrations - registry integration named docker
-          CF_CONTAINER_REGISTRY_INTEGRATION: "test-210622"
-#         using integrations - jira integration named jira
-          CF_JIRA_INTEGRATION: "jira"
-
-#           example of explicit docker hub credentials for cases that CF_CONTAINER_REGISTRY_INTEGRATION is not in use
-#           CF_DOCKERHUB_USERNAME: ${{ secrets.DOCKERQUAY_USERNAME }}
-#           CF_DOCKERHUB_PASSWORD: ${{ secrets.DOCKERQUAY_TOKEN }}
-#           example of explicit jira credentials when CF_JIRA_INTEGRATION is not in use
-#           CF_JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-#           CF_JIRA_HOST_URL: "https://codefresh-io.atlassian.net"
-#           CF_JIRA_EMAIL: "saffi.hartal@codefresh.io" 
-          
-          "CF_GITHUB_TOKEN": ${{ secrets.G_TOKEN }}
-          "CF_GIT_PROVIDER": "github"
-          "CF_GIT_REPO": "codefresh-io/example-github-action-use-csdp-report-image"
-          "CF_GIT_BRANCH": "feature"
-          "CF_JIRA_MESSAGE": "wip CR-11027"
-          "CF_JIRA_PROJECT_PREFIX": "CR"
-        uses: codefresh-io/csdp-report-image@0.0.46
+        
+        uses: codefresh-io/codefresh-report-image@0.0.83
+         
 
 
