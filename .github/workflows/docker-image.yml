@@ -27,8 +27,8 @@ jobs:
           #CF_CONTAINER_REGISTRY_INTEGRATION: "test-ecr-new-1"
           #CF_WORKFLOW_NAME : "bla"
           CF_WORKFLOW_URL: "www.google.com"          
-          #CF_AWS_ROLE: arn:aws:iam::095585282052:role/test-victor-ecr
-          #CF_AWS_REGION: us-east-1
+          CF_AWS_ROLE: arn:aws:iam::095585282052:role/test-victor-ecr
+          CF_AWS_REGION: us-east-1
           #CF_CI_TYPE: github-actions
           
           #CF_IMAGE: "quay.io/viktorcodefresh/repo:latest"
@@ -36,11 +36,11 @@ jobs:
           #CF_REGISTRY_PASSWORD: "Tkd1common"
           #CF_REGISTRY_DOMAIN: "quay.io"
           
-          CF_IMAGE: "victorcodefresh/victor-test-cf-pusher:1.0.3"                
-          CF_DOCKERHUB_USERNAME: "viktorcodefresh"
-          CF_DOCKERHUB_PASSWORD: "Tkd1common"
+          #CF_IMAGE: "victorcodefresh/victor-test-cf-pusher:1.0.3"                
+          #CF_DOCKERHUB_USERNAME: "viktorcodefresh"
+          #CF_DOCKERHUB_PASSWORD: "Tkd1common"
           
-        uses: codefresh-io/codefresh-report-image@0.0.83
+        uses: codefresh-io/codefresh-report-image@0.0.86
          
 
 
