@@ -29,7 +29,7 @@ jobs:
           CF_WORKFLOW_URL: "www.google.com"          
           CF_AWS_ROLE: "arn:aws:iam::095585282052:role/test-victor-ecr"
           CF_AWS_REGION: "us-east-1"
-          #VERSION: 0.0.86
+          VERSION: 0.0.86
           
           
           #CF_IMAGE: "quay.io/viktorcodefresh/repo:latest"
