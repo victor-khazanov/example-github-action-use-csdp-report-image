@@ -10,32 +10,14 @@ jobs:
     environment:
       name: test
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
+     
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: arn:aws:iam::095585282052:role/test-victor-ecr
-          aws-region: us-east-1
-          role-session-name: MySessionName
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+      
 
        
-      - name: Build & push the ECR image
-        env:
-          CF_IMAGE: 095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest
-        run: |
-          docker build . --file Dockerfile --tag $CF_IMAGE && docker push $CF_IMAGE
-          echo "Image should be accessible to your local machine (after docker login) by:"
-          echo "docker pull $CF_IMAGE"
-          docker pull $CF_IMAGE
-          echo "On the next step, the report image would use the integration to pull information on the reported image, and using the specified enrichers."
+       
       - name: report image by action
         with:
           # Specify cluster app-proxy
