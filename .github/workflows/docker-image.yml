@@ -41,7 +41,7 @@ jobs:
           #CF_DOCKERHUB_USERNAME: "viktorcodefresh"
           #CF_DOCKERHUB_PASSWORD: "Tkd1common"
           
-        uses: codefresh-io/codefresh-report-image@0.0.86
+        uses: codefresh-io/codefresh-report-image@0.0.87
          
 
 
