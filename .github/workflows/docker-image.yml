@@ -22,7 +22,7 @@ jobs:
         with:
           # Specify cluster app-proxy
           CF_HOST: https://victor.pipeline-team.cf-cd.com
-          CF_API_KEY: "62b94dae30afb65bb9fed775.6d29095389f5944781791a17a48fc512"
+          CF_API_KEY: "62d67bf59f65cd40f7a8fca4.eda6756f90e0992cfc7e58f437866d32"
           CF_IMAGE: "095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest"
           CF_CONTAINER_REGISTRY_INTEGRATION: "ecr-1"
           #CF_WORKFLOW_NAME : "bla"
