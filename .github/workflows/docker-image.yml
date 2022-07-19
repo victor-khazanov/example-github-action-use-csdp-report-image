@@ -36,6 +36,11 @@ jobs:
           
           CF_WORKFLOW_URL: "www.google.com"          
           
+          CF_GITHUB_TOKEN: "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"
+          CF_GIT_PROVIDER: "github"
+          CF_GIT_REPO: "victor-khazanov/rn-190722_git-source"
+          CF_GIT_BRANCH: "main"
+          
         uses: codefresh-io/codefresh-report-image@0.0.150
          
 
