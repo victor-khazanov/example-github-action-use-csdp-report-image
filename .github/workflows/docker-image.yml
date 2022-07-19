@@ -20,26 +20,21 @@ jobs:
        
       - name: report image by action
         with:
+        
           # Specify cluster app-proxy
           CF_HOST: https://victor.pipeline-team.cf-cd.com
+          
+          # Specify codefresh token
           CF_API_KEY: "62d67bf59f65cd40f7a8fca4.eda6756f90e0992cfc7e58f437866d32"
+          
+          # image 
           CF_IMAGE: "095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest"
-          CF_CONTAINER_REGISTRY_INTEGRATION: "ecr-1"
-          #CF_WORKFLOW_NAME : "bla"
+          
+          #specify integration name
+          CF_CONTAINER_REGISTRY_INTEGRATION: "ecr-2"
+          
+          
           CF_WORKFLOW_URL: "www.google.com"          
-          #CF_AWS_ROLE: "arn:aws:iam::095585282052:role/test-victor-ecr"
-          #CF_AWS_REGION: "us-east-1"
-          #VERSION: 0.0.86
-          
-          
-          #CF_IMAGE: "quay.io/viktorcodefresh/repo:latest"
-          #CF_REGISTRY_USERNAME: "viktorcodefresh"
-          #CF_REGISTRY_PASSWORD: "Tkd1common"
-          #CF_REGISTRY_DOMAIN: "quay.io"
-          
-          #CF_IMAGE: "victorcodefresh/victor-test-cf-pusher:1.0.3"                
-          #CF_DOCKERHUB_USERNAME: "viktorcodefresh"
-          #CF_DOCKERHUB_PASSWORD: "Tkd1common"
           
         uses: codefresh-io/codefresh-report-image@0.0.150
          
