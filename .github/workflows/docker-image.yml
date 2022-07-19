@@ -31,10 +31,10 @@ jobs:
           CF_IMAGE: "095585282052.dkr.ecr.us-east-1.amazonaws.com/victor-test:latest"
           
           #specify integration name
-          CF_CONTAINER_REGISTRY_INTEGRATION: "ecr-2"
+          CF_CONTAINER_REGISTRY_INTEGRATION: "ecr-3"
           
           
-          CF_WORKFLOW_URL: "www.google.com"          
+          CF_WORKFLOW_URL: "g.codefresh.io"          
           
          
           
